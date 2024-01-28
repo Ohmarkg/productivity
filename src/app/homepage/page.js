@@ -73,14 +73,14 @@ const Show = () => {
             <h1 style={{textAlign:'center', backgroundColor: '#ffc175', fontSize: '50px', color: 'white', width: 'auto', marginBottom: '7px'}}>
                 Home
             </h1>
-            <button onClick={handleClick} style={{display:'flex', justifyContent: 'center', alignItems:'center', fontSize:'20px', backgroundColor:'black', borderRadius:'50px', height:'25px', width:'25px', margin:'0px 0px', position: 'sticky', top:'0'}}>
+            <button onClick={handleClick} style={{display:'flex', justifyContent: 'center', alignItems:'center', fontSize:'45px', backgroundColor:'black', borderRadius:'50px', height:'45px', width:'45px', marginLeft:'150px', marginTop:'50px', marginBottom:'-100px', position: 'sticky', top:'10px'}}>
                     +
             </button>
             <br></br>
             <div style={{backgroundColor:'PeachPuff', height:'100vh', height:'auto', minHeight:'100vh', width:'auto', margin:'0px 250px', borderRadius: '20px', padding:'10px 0px'}}>
                 {projects.map((project) => 
                     <div key={project.id} className="text-5xl font-bold font-sans_serif text-gray-700 items-center flex justify-center" style={{display: 'flex', justifyContent: 'space-between', padding: '10px 20px', borderRadius: '50px',backgroundColor: 'white',color: 'dark-gray-700',textAlign: 'center', margin: '10px 50px'}}>
-                        <div style={{width: 'fit', display: 'flex', justifyContent: 'center'}}>
+                        <div style={{display: 'flex', justifyContent: 'center', width: 'auto'}}>
                             <EditText text={project.text} onTextChange={newText => handleTextChange(project.id, newText)} />
                         </div>
                         <div style={{display: 'flex', justifyContent: 'space-between', padding: '10px 20px', borderRadius: '50px',backgroundColor: 'red',color: 'dark-gray-700',textAlign: 'center'}}>
