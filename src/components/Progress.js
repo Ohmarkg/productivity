@@ -4,7 +4,7 @@ import React from 'react';
 function Progress() {
   const radius =100;
   const stroke = 10;
-  const progress = 70; // your progress percentage
+  const progress = 80; // your progress percentage
 
   // Circumference for the progress stroke
   const normalizedRadius = radius - stroke * 2;
