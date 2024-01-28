@@ -3,35 +3,35 @@ import { useState, useEffect } from "react";
 import { auth, googleProvider } from "../config/firebase.js";
 import { signInWithPopup, signOut } from "firebase/auth";
 import { db } from "../config/firebase.js";
-import { doc } from 'firebase/firestore'; 
-import { getDoc,getDocs , collection, addDoc , setDoc } from "firebase/firestore";
+import { doc } from 'firebase/firestore';
+import { getDoc, getDocs, collection, addDoc, setDoc } from "firebase/firestore";
 
 
 export default function Home() {
   const [users, setUsers] = useState([]);
-  const userCollectionRef = collection(db,'users');
+  const userCollectionRef = collection(db, 'users');
 
   useEffect(() => {
 
     const getUserList = async () => {
-    const data = await getDocs(userCollectionRef);
-    const userList = data.docs.map((doc) => (
-      {  
-      id: doc.id 
-      }));
-    setUsers(userList);
+      const data = await getDocs(userCollectionRef);
+      const userList = data.docs.map((doc) => (
+        {
+          id: doc.id
+        }));
+      setUsers(userList);
 
-  }
+    }
 
-  getUserList();
-  
-}, []);
+    getUserList();
 
-  const signInwithGoogle = async () =>{
-    try{
+  }, []);
+
+  const signInwithGoogle = async () => {
+    try {
       await signInWithPopup(auth, googleProvider)
       //setIsNewUser(auth?.currentUser?.uid in users)
-      console.log('Signed in as ' , auth?.currentUser?.displayName)
+      console.log('Signed in as ', auth?.currentUser?.displayName)
 
       const userDocRef = doc(db, 'users', auth?.currentUser?.uid);
       const userDocSnap = await getDoc(userDocRef);
@@ -44,29 +44,38 @@ export default function Home() {
           name: auth?.currentUser?.displayName
         });
       }
-      
+
     }
-    catch(err){
+    catch (err) {
       console.log(err)
     }
 
   }
 
-  const signOutwithGoogle = async () =>{
-    try{
+  const signOutwithGoogle = async () => {
+    try {
       await signOut(auth)
     }
-    catch(err){
+    catch (err) {
       console.log(err)
     }
 
   }
   return (
-    
-    <main className="bg-white  w-screen h-screen grid grid-flow-row justify-center">
-      
-      <button onClick={signInwithGoogle }  className="text-black text-center bg-gray-600 rounded-md w-fit h-fit text-lg ">Sign In</button>
-      <button onClick={signOutwithGoogle} className="text-black text bg-gray-600 rounded-md w-fit h-fit text-lg">Sign Out</button>
+
+    <main className="bg-white  w-screen h-screen ">
+      <div className="bg-blue-500  w-screen text-center text-7xl  h-fit mb-20">
+        Productivity
+      </div>
+      <div className="grid grid-flow-row gap-4 justify-center"> 
+        <button onClick={signInwithGoogle} className="text-black text-center bg-blue-600 rounded-md  w-60  h-[100px] text-5xl ">
+          Sign In
+        </button>
+        <button onClick={signOutwithGoogle} className="text-black text bg-gray-600 rounded-lg w-60 h-[100px]
+         text-5xl">
+          Sign Out
+        </button>
+      </div>
     </main>
   );
 }
