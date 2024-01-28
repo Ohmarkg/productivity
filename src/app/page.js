@@ -1,4 +1,6 @@
 import Image from "next/image";
+import React from "react";
+import Progress from "../components/Progress";
 
 export default function Home() {
   return (
@@ -107,6 +109,18 @@ export default function Home() {
             Instantly deploy your Next.js site to a shareable URL with Vercel.
           </p>
         </a>
+
+        <a
+          href="homepage"
+          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h2 className={`mb-3 text-2xl font-semibold`}>
+            Home{" "}
+          </h2>
+        </a>
+        <Progress />
       </div>
     </main>
   );
