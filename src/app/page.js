@@ -75,6 +75,7 @@ export default function Home() {
          text-5xl">
           Sign Out
         </button>
+        <a href="/homepage" className="text-black text bg-gray-600 rounded-lg w-60 h-[100px] text-7xl">Home</a>
       </div>
     </main>
   );
